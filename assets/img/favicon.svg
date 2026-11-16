@@ -1,6 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-540 -540 1080 1080" fill="none" stroke="#00bf63" stroke-width="58" stroke-linejoin="miter">
-  <polygon points="0,-222 157,-157 222,0 157,157 0,222 -157,157 -222,0 -157,-157"/>
-  <path id="p" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/>
-  <use href="#p" transform="rotate(45)"/><use href="#p" transform="rotate(90)"/><use href="#p" transform="rotate(135)"/>
-  <use href="#p" transform="rotate(180)"/><use href="#p" transform="rotate(225)"/><use href="#p" transform="rotate(270)"/><use href="#p" transform="rotate(315)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-500 -500 1000 1000">
+  <!-- Soleil INJARA « plein » pour l'onglet : pétales pleins + octogone épais, lisible en 16 px -->
+  <g fill="#00bf63">
+    <path id="p" d="M-34-492H34L106-300A196 196 0 0 1-106-300Z"/>
+    <use href="#p" transform="rotate(45)"/><use href="#p" transform="rotate(90)"/><use href="#p" transform="rotate(135)"/>
+    <use href="#p" transform="rotate(180)"/><use href="#p" transform="rotate(225)"/><use href="#p" transform="rotate(270)"/><use href="#p" transform="rotate(315)"/>
+  </g>
+  <polygon points="0,-206 146,-146 206,0 146,146 0,206 -146,146 -206,0 -146,-146" fill="none" stroke="#00bf63" stroke-width="88" stroke-linejoin="miter"/>
 </svg>
