@@ -1,0 +1,10 @@
+.git
+.gitignore
+.assetsignore
+.github
+.claude
+.wrangler
+node_modules
+wrangler.jsonc
+README.md
+EXAMPLE- PIC
