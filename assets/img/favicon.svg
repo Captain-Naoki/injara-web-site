@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-540 -540 1080 1080" fill="none" stroke="#00bf63" stroke-width="58" stroke-linejoin="miter">
+  <polygon points="0,-222 157,-157 222,0 157,157 0,222 -157,157 -222,0 -157,-157"/>
+  <path id="p" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/>
+  <use href="#p" transform="rotate(45)"/><use href="#p" transform="rotate(90)"/><use href="#p" transform="rotate(135)"/>
+  <use href="#p" transform="rotate(180)"/><use href="#p" transform="rotate(225)"/><use href="#p" transform="rotate(270)"/><use href="#p" transform="rotate(315)"/>
+</svg>

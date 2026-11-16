@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-t="meta.title">INJARA : logiciel de recrutement et tri de CV par IA pour les PME africaines</title>
+<meta name="description" data-t-attr="content=meta.desc" content="INJARA récupère les candidatures dans votre boîte mail, les classe par poste, place les meilleurs profils en tête et sécurise vos entretiens vidéo. Données chiffrées, jamais stockées sur un serveur étranger.">
+<meta name="theme-color" content="#031e40">
+<link rel="canonical" href="https://injara.site/">
+<link rel="alternate" hreflang="fr" href="https://injara.site/">
+<link rel="alternate" hreflang="en" href="https://injara.site/?lang=en">
+<link rel="alternate" hreflang="de" href="https://injara.site/?lang=de">
+<link rel="alternate" hreflang="es" href="https://injara.site/?lang=es">
+<link rel="alternate" hreflang="nl" href="https://injara.site/?lang=nl">
+<link rel="alternate" hreflang="x-default" href="https://injara.site/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="INJARA">
+<meta property="og:title" content="INJARA, le recrutement intelligent">
+<meta property="og:description" content="L'IA recrute avec vous. Tri des CV, classement par poste et entretiens vidéo sécurisés, avec des données qui restent chez vous.">
+<meta property="og:image" content="https://injara.site/assets/img/og.jpg">
+<meta property="og:url" content="https://injara.site/">
+<link rel="icon" href="assets/img/favicon.svg?v=2" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon.png?v=2" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script>
+(function(){var S=['fr','en','de','es','nl'],l=null;
+try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('injara-lang')}catch(e){}
+if(S.indexOf(l)<0){l=(navigator.language||'fr').slice(0,2).toLowerCase();if(S.indexOf(l)<0)l='fr'}
+window.__LANG=l;var d=document.documentElement;d.lang=l;d.className='js'+(l!=='fr'?' i18n-pending':'');})();
+</script>
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true">
+  <symbol id="sun" viewBox="-500 -500 1000 1000"><polygon points="0,-222 157,-157 222,0 157,157 0,222 -157,157 -222,0 -157,-157"/><path id="sun-p" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/><use href="#sun-p" transform="rotate(45)"/><use href="#sun-p" transform="rotate(90)"/><use href="#sun-p" transform="rotate(135)"/><use href="#sun-p" transform="rotate(180)"/><use href="#sun-p" transform="rotate(225)"/><use href="#sun-p" transform="rotate(270)"/><use href="#sun-p" transform="rotate(315)"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M3 13l2.6-7a2 2 0 0 1 1.9-1.3h9a2 2 0 0 1 1.9 1.3L21 13v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 13h5l1.5 2.5h5L16 13h5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.2A9.7 9.7 0 0 1 12 6c5 0 8.5 4 9.5 6a12 12 0 0 1-2.6 3.3M6.5 7.6A12.6 12.6 0 0 0 2.5 12c1 2 4.500 6 9.500 6 1.500 0 2.800-.3 4-.9M9.900 9.900a3 3 0 0 0 4.200 4.200"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4.500 4.500 0 0 1-.6-8.960A6 6 0 0 1 18 10.500 3.750 3.750 0 0 1 17.500 18z"/></symbol>
+  <symbol id="i-rank" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13v1.500M15 13v1.500M2 13v2M22 13v2"/><circle cx="12" cy="3.500" r="1"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2M8 9h8M8 12h8M8 15h5"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="3"/><path d="M16 10.500l5-3v9l-5-3"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-disk" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.500" width="14" height="10" rx="2.500"/><path d="M8 10.500V8a4 4 0 0 1 8 0v2.500"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.500-3.200 7.800-8 9-4.800-1.200-8-4.500-8-9V6z"/><path d="M9 12l2.200 2.200L15 10.500"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.500 12S6 6 12 6s9.500 6 9.500 6-3.500 6-9.500 6-9.500-6-9.500-6z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 15.500H3z"/><path d="M12 10v4M12 17v.100"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.800 3 2.800 15 0 18M12 3c-2.800 3-2.800 15 0 18"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.500l1.500 4-2 1.500a12 12 0 0 0 6.500 6.500l1.500-2 4 1.500V19a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.200 7-11.500a7 7 0 0 0-14 0C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.500a2.500 2.500 0 0 1 0-5H6M18 9h1.500a2.500 2.500 0 0 0 0-5H18M4 22h16M10 14.660V17c0 .550-.470.980-.970 1.210C7.850 18.750 7 20.240 7 22M14 14.660V17c0 .550.470.980.970 1.210C16.150 18.750 17 20.240 17 22M18 2H6v7a6 6 0 0 0 12 0V2z"/></symbol>
+  <symbol id="i-demo" viewBox="0 0 24 24"><circle cx="12" cy="5.500" r="2.500"/><path d="M7.500 13c.500-2.600 2.200-3.800 4.500-3.800s4 1.200 4.500 3.800"/><rect x="6" y="13" width="12" height="6.500" rx="1.200"/><path d="M3 21.500h18M12 15.800v.900"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.500 4.500-6 8-6s7 1.500 8 6"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="3" width="11" height="18" rx="1.500"/><path d="M15 9h5v12h-5M8 7h3M8 11h3M8 15h3"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.500"/><path d="M2.500 20c.7-3.800 3.300-5.500 6.500-5.500s5.800 1.700 6.500 5.500M16 4.800a3.500 3.500 0 0 1 0 6.400M18 14.800c2 .7 3.200 2.400 3.500 5.200"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path class="fill" d="M6.900 8.700H3.600V20h3.300zM5.250 3.500a1.950 1.950 0 1 0 0 3.900 1.950 1.950 0 0 0 0-3.900zM20.400 13.500c0-3.300-1.750-5.050-4.200-5.050-1.850 0-2.700 1-3.150 1.750V8.700H9.800V20h3.300v-6.100c0-1.600.6-2.650 1.950-2.650 1.300 0 1.900.95 1.900 2.650V20h3.450z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path class="fill" d="M13.600 21v-8h2.700l.4-3.200h-3.100V7.800c0-.9.300-1.600 1.600-1.600h1.700V3.300A21 21 0 0 0 14.500 3.200c-2.400 0-4.100 1.500-4.100 4.200v2.400H7.700V13h2.700v8z"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path class="fill" d="M16.300 3h-3.100v12.300a2.550 2.550 0 1 1-2.550-2.550c.25 0 .5.040.75.100V9.700a5.700 5.700 0 1 0 4.900 5.600V9.200a7 7 0 0 0 4.100 1.300V7.400a4.100 4.100 0 0 1-4.100-4.400z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3.500 20.500l1.200-4.300a8.500 8.500 0 1 1 3.200 3.100z"/><path d="M9 8.500c0 3 2.500 6 6 6.500l1.200-1.500-2-1-0.900.9c-1-.5-1.900-1.400-2.400-2.400l.9-.9-1-2z"/></symbol>
+</svg>
+
+<a class="skip" href="#main" data-t="nav.skip">Aller au contenu</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="header" id="header">
+  <div class="container header-in">
+    <a class="brand" href="#top" aria-label="INJARA">
+      <img class="brand-light" src="assets/img/wordmark-white.png" alt="Injara" width="112" height="40">
+      <img class="brand-dark" src="assets/img/wordmark-navy.png" alt="" width="112" height="40" aria-hidden="true">
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#probleme" data-t="nav.problem">Problème</a>
+      <a href="#solution" data-t="nav.solution">Solution</a>
+      <a href="#fonctionnalites" data-t="nav.features">Fonctionnalités</a>
+      <a href="#confidentialite" data-t="nav.privacy">Confidentialité</a>
+      <a href="#entretiens" data-t="nav.interviews">Entretiens</a>
+      <a href="#faq" data-t="nav.faq">FAQ</a>
+      <a class="btn btn-primary nav-cta-mobile" href="#contact" data-t="cta.demo">Demander une démo</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang" id="lang">
+        <button class="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Langue">
+          <svg class="ic"><use href="#i-globe"/></svg><span class="lang-cur">FR</span><svg class="ic ic-sm"><use href="#i-chev"/></svg>
+        </button>
+        <ul class="lang-menu" role="listbox">
+          <li><button type="button" data-lang="fr"><b>FR</b> Français</button></li>
+          <li><button type="button" data-lang="en"><b>EN</b> English</button></li>
+          <li><button type="button" data-lang="de"><b>DE</b> Deutsch</button></li>
+          <li><button type="button" data-lang="es"><b>ES</b> Español</button></li>
+          <li><button type="button" data-lang="nl"><b>NL</b> Nederlands</button></li>
+        </ul>
+      </div>
+      <a class="btn btn-primary header-cta" href="#contact"><span data-t="cta.demo">Demander une démo</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-photo" id="heroPhoto"><img src="assets/img/hero-bg.webp" alt="" width="607" height="517" fetchpriority="high"></div>
+    <div class="hero-tint"></div>
+    <div class="hero-shade"></div>
+  </div>
+
+  <div class="clusters" id="clusters" aria-hidden="true">
+    <div class="clusters-in">
+      <div class="cluster cl-tl" style="--n:.85s;--f:3s">
+        <div class="cl-card">
+          <p class="cl-head"><span class="cl-ico"><svg class="ic"><use href="#i-mail"/></svg></span><span data-t="hc.new">12 nouveaux CV récupérés</span></p>
+          <ul class="cl-mails">
+            <li><svg class="ic"><use href="#i-file"/></svg><span><span data-t="mail.app">Candidature</span> – <span data-t="job.accountant">Comptable senior</span></span></li>
+            <li><svg class="ic"><use href="#i-file"/></svg><span><span data-t="mail.app">Candidature</span> – <span data-t="job.dev">Développeur web</span></span></li>
+            <li><svg class="ic"><use href="#i-file"/></svg><span data-t="mail.spont">Candidature spontanée</span></li>
+          </ul>
+        </div>
+        <svg class="cord" viewBox="0 0 120 60" style="margin-left:112px"><path class="cl-line" pathLength="1" d="M4 2 C4 34, 116 26, 116 58"/></svg>
+        <div class="cl-pill" style="margin-left:176px"><svg class="ic"><use href="#i-mail"/></svg><span data-t="hc.pill1">Candidatures récupérées</span></div>
+      </div>
+
+      <div class="cluster cl-bl" style="--n:1.25s;--f:3.4s">
+        <div class="cl-pill" style="margin-left:144px"><svg class="ic"><use href="#i-file"/></svg><span data-t="hc.pill2">Chaque CV analysé</span></div>
+        <svg class="cord" viewBox="0 0 120 60" style="margin-left:96px"><path class="cl-line" pathLength="1" d="M116 2 C116 34, 4 26, 4 58"/></svg>
+        <div class="cl-card cl-wide cl-flush">
+          <div class="cl-green"><span class="cl-ok"><svg class="ic"><use href="#i-check"/></svg></span><span><b data-t="hc.cv">CV analysé</b><small>B. Tchami · <span data-t="job.accountant">Comptable senior</span></small></span></div>
+          <div class="cl-pad">
+            <div class="cl-two"><div><small data-t="hc.edu">FORMATION</small><b data-t="hc.degree">Licence</b></div><div><small data-t="hc.exp">EXPÉRIENCE</small><b data-t="hc.years">5 ans</b></div></div>
+            <p class="cl-sub" data-t="hc.skills">Compétences détectées</p>
+            <div class="cl-chips"><span><svg class="ic"><use href="#i-check"/></svg>SYSCOHADA</span><span><svg class="ic"><use href="#i-check"/></svg>Sage</span><span><svg class="ic"><use href="#i-check"/></svg><span data-t="skill.tax">Fiscalité</span></span><span><svg class="ic"><use href="#i-check"/></svg>Excel</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cluster cl-tr" style="--n:1.65s;--f:3.8s">
+        <div class="cl-pill" style="margin-right:160px"><svg class="ic"><use href="#i-trophy"/></svg><span data-t="hc.pill3">Les meilleurs en tête</span></div>
+        <svg class="cord" viewBox="0 0 120 60" style="margin-right:96px"><path class="cl-line" pathLength="1" d="M4 2 C4 34, 116 26, 116 58"/></svg>
+        <div class="cl-card">
+          <p class="cl-title"><b data-t="job.accountant">Comptable senior</b><small data-t="hc.ranked">24 candidatures classées</small></p>
+          <ul class="cl-rank">
+            <li><span class="av a">AN</span><span class="cl-rm"><span>A. Ngono</span><i class="cl-bar"><i style="--w:92%"></i></i></span><b>92%</b></li>
+            <li><span class="av b">BT</span><span class="cl-rm"><span>B. Tchami</span><i class="cl-bar"><i style="--w:87%"></i></i></span><b>87%</b></li>
+            <li><span class="av b">CF</span><span class="cl-rm"><span>C. Fouda</span><i class="cl-bar"><i style="--w:78%"></i></i></span><b>78%</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cluster cl-br" style="--n:2.05s;--f:4.2s">
+        <div class="cl-card">
+          <div class="cl-chart-head"><p class="cl-title"><b data-t="hc.recv">Candidatures reçues</b><small data-t="hc.30d">30 derniers jours</small></p><em>+38</em></div>
+          <svg class="cl-chart" viewBox="0 0 220 80" fill="none">
+            <line x1="0" x2="220" y1="20" y2="20" stroke="#e2e8f0" stroke-dasharray="3 4"/><line x1="0" x2="220" y1="40" y2="40" stroke="#e2e8f0" stroke-dasharray="3 4"/><line x1="0" x2="220" y1="60" y2="60" stroke="#e2e8f0" stroke-dasharray="3 4"/>
+            <path class="cl-area" d="M0 70 C40 68, 70 66, 100 58 S150 40, 170 26 S205 8, 220 6 L220 80 L0 80 Z" fill="#00bf63" fill-opacity=".08"/>
+            <path class="cl-line cl-curve" pathLength="1" d="M0 70 C40 68, 70 66, 100 58 S150 40, 170 26 S205 8, 220 6"/>
+            <circle class="cl-dot" cx="215" cy="7" r="4" fill="#fff" stroke="#00bf63" stroke-width="2.5"/>
+          </svg>
+          <div class="cl-weeks"><span><span data-t="hc.w">S</span>1</span><span><span data-t="hc.w">S</span>2</span><span><span data-t="hc.w">S</span>3</span><span><span data-t="hc.w">S</span>4</span></div>
+        </div>
+        <svg class="cord" viewBox="0 0 120 60" style="margin-right:112px"><path class="cl-line" pathLength="1" d="M116 2 C116 34, 4 26, 4 58"/></svg>
+        <div class="cl-pill" style="margin-right:176px"><svg class="ic"><use href="#i-rank"/></svg><span data-t="hc.pill4">Suivez vos recrutements</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hero-in" id="heroIn">
+    <p class="eyebrow eyebrow-light hero-anim" style="--d:0"><span data-t="hero.eyebrow">INJARA, le recrutement intelligent&nbsp;!</span></p>
+    <h1 class="hero-title" id="heroTitle">
+      <span class="line" data-t="hero.title1">L'IA recrute</span>
+      <span class="line grad" data-t="hero.title2">avec vous.</span>
+    </h1>
+    <p class="hero-lead hero-anim" style="--d:3" data-t="hero.lead">Vous définissez vos postes. INJARA récupère les candidatures dans votre boîte mail, les classe, place les meilleurs profils en tête et sécurise vos entretiens vidéo. Le tout sur votre ordinateur.</p>
+    <div class="hero-cta hero-anim" style="--d:4">
+      <a class="btn btn-primary btn-lg" data-magnetic href="#contact"><span data-t="cta.demo">Demander une démo</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost btn-lg" data-magnetic href="#solution" data-t="hero.how">Voir comment ça marche</a>
+    </div>
+    <ul class="hero-trust hero-anim" style="--d:5">
+      <li><svg class="ic"><use href="#i-check"/></svg><span data-t="hero.t1">Connecté à votre boîte mail</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span data-t="hero.t2">Données chiffrées et souveraines</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span data-t="hero.t3">Pensé pour les PME africaines</span></li>
+    </ul>
+
+    <div class="hero-cards" id="heroCards">
+      <article class="hcard hc-1 hero-anim" style="--d:6" data-depth="14">
+        <div class="hcard-head green"><svg class="ic"><use href="#i-scan"/></svg><div><b data-t="hc.cv">CV analysé</b><small>B. Tchami · <span data-t="job.accountant">Comptable senior</span></small></div></div>
+        <div class="hcard-grid">
+          <div><small data-t="hc.edu">FORMATION</small><b data-t="hc.degree">Licence</b></div>
+          <div><small data-t="hc.exp">EXPÉRIENCE</small><b data-t="hc.years">5 ans</b></div>
+        </div>
+        <small class="muted" data-t="hc.skills">Compétences détectées</small>
+        <div class="chips"><span class="chip">SYSCOHADA</span><span class="chip">Sage</span><span class="chip" data-t="skill.tax">Fiscalité</span><span class="chip">Excel</span></div>
+        <span class="scanline"></span>
+      </article>
+      <article class="hcard hc-2 hero-anim" style="--d:7" data-depth="26">
+        <div class="hcard-title"><b data-t="job.accountant">Comptable senior</b><small data-t="hc.ranked">24 candidatures classées</small></div>
+        <ul class="rank">
+          <li><span class="av a">AN</span><div class="rank-main"><span>A. Ngono</span><i class="bar"><i style="--w:92%"></i></i></div><b>92%</b></li>
+          <li><span class="av b">BT</span><div class="rank-main"><span>B. Tchami</span><i class="bar"><i style="--w:87%"></i></i></div><b>87%</b></li>
+          <li><span class="av c">CF</span><div class="rank-main"><span>C. Fouda</span><i class="bar"><i style="--w:78%"></i></i></div><b>78%</b></li>
+        </ul>
+      </article>
+      <article class="hcard hc-3 hero-anim" style="--d:8" data-depth="18">
+        <div class="hcard-title row"><span class="pulse-dot"></span><b data-t="hc.new">12 nouveaux CV récupérés</b></div>
+        <ul class="mails">
+          <li style="--i:0"><svg class="ic"><use href="#i-mail"/></svg><span><span data-t="mail.app">Candidature</span> – <span data-t="job.accountant">Comptable senior</span></span></li>
+          <li style="--i:1"><svg class="ic"><use href="#i-mail"/></svg><span><span data-t="mail.app">Candidature</span> – <span data-t="job.dev">Développeur web</span></span></li>
+          <li style="--i:2"><svg class="ic"><use href="#i-mail"/></svg><span data-t="mail.spont">Candidature spontanée</span></li>
+        </ul>
+      </article>
+    </div>
+    <p class="hero-note" data-t="hero.note">Illustrations : données d'exemple</p>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-set">
+      <span data-t="mq.1">Profils de poste sur mesure</span><img src="assets/img/symbol-green.png" alt="">
+      <span data-t="mq.2">Agent IA boîte mail</span><img src="assets/img/symbol-green.png" alt="">
+      <span data-t="mq.3">Classement par poste</span><img src="assets/img/symbol-green.png" alt="">
+      <span data-t="mq.4">Score de 0 à 100 %</span><img src="assets/img/symbol-green.png" alt="">
+      <span data-t="mq.5">Potentiel à 12–36 mois</span><img src="assets/img/symbol-green.png" alt="">
+      <span data-t="mq.6">Entretiens vidéo sécurisés</span><img src="assets/img/symbol-green.png" alt="">
+      <span data-t="mq.7">Détection anti-triche</span><img src="assets/img/symbol-green.png" alt="">
+      <span data-t="mq.8">Rapports PDF</span><img src="assets/img/symbol-green.png" alt="">
+      <span data-t="mq.9">Serveurs souverains</span><img src="assets/img/symbol-green.png" alt="">
+      <span data-t="mq.10">Données chiffrées</span><img src="assets/img/symbol-green.png" alt="">
+    </div>
+  </div>
+</div>
+
+<!-- ================= PROBLÈME ================= -->
+<section class="section wm wm-right" id="probleme">
+  <div class="container">
+    <p class="eyebrow" data-reveal><span class="rule"></span><span data-t="pb.eyebrow">Le problème</span></p>
+    <div class="head-ill head-ill-pb">
+      <div>
+      <h2 class="statement" data-split data-t="pb.statement">Des centaines de CV dans une boîte mail. Des heures de lecture. Et les meilleurs profils, perdus dans la masse.</h2>
+      <p class="lead" data-reveal data-t="pb.lead">Le tri des CV vous coûte du temps et des talents.</p>
+      </div>
+      <figure class="ill ill-img" data-reveal><img src="assets/ill/boite-mail.svg" alt="" width="960" height="800" loading="lazy" decoding="async"></figure>
+    </div>
+    <div class="grid g4 pb-grid">
+      <article class="card pcard" data-reveal style="--d:0"><span class="icon-box"><svg class="ic"><use href="#i-inbox"/></svg></span><h3 data-t="pb.c1.t">Des centaines de CV par e-mail</h3><p data-t="pb.c1.d">Les candidatures s'accumulent dans la boîte mail, sans aucun outil pour les trier intelligemment.</p></article>
+      <article class="card pcard" data-reveal style="--d:1"><span class="icon-box"><svg class="ic"><use href="#i-clock"/></svg></span><h3 data-t="pb.c2.t">Un tri manuel long et subjectif</h3><p data-t="pb.c2.d">Lire chaque CV prend des heures, et les meilleurs profils finissent par se perdre dans la masse.</p></article>
+      <article class="card pcard" data-reveal style="--d:2"><span class="icon-box"><svg class="ic"><use href="#i-eyeoff"/></svg></span><h3 data-t="pb.c3.t">Des entretiens en ligne faussés</h3><p data-t="pb.c3.d">Second écran, onglets cachés, assistants IA : difficile de savoir qui répond vraiment.</p></article>
+      <article class="card pcard" data-reveal style="--d:3"><span class="icon-box"><svg class="ic"><use href="#i-cloud"/></svg></span><h3 data-t="pb.c4.t">Des solutions inadaptées</h3><p data-t="pb.c4.d">Les outils existants stockent vos données sur des serveurs étrangers et sont coûteux : ils ne sont pas à la portée de toutes les PME africaines.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOLUTION ================= -->
+<section class="section section-mist solution" id="solution">
+  <div class="container">
+    <div class="sec-head split">
+      <div>
+        <p class="eyebrow" data-reveal><span class="rule"></span><span data-t="sol.eyebrow">La solution</span></p>
+        <h2 class="h2" data-reveal data-t="sol.title">Six étapes, de la boîte mail à la décision</h2>
+      </div>
+      <div class="sol-side"><figure class="ill ill-img" data-reveal><img src="assets/ill/tri-candidatures.svg" alt="" width="786" height="800" loading="lazy" decoding="async"></figure>
+      <p class="lead" data-reveal data-t="sol.lead">Vous définissez le besoin. INJARA s'occupe du reste, et vous gardez la main à chaque étape.</p></div>
+    </div>
+  </div>
+  <div class="steps-wrap" id="stepsWrap">
+    <div class="steps-sticky">
+      <div class="container steps-in">
+        <ol class="steps" id="steps">
+          <li class="step is-active"><button type="button"><span class="num">01</span><span class="step-body"><b data-t="st1.t">Définissez vos profils de poste</b><span class="step-desc" data-t="st1.d">Compétences, expérience, formation : décrivez le poste selon vos besoins. INJARA s'adapte à tout type de structure et de métier.</span></span></button></li>
+          <li class="step"><button type="button"><span class="num">02</span><span class="step-body"><b data-t="st2.t">Récupérez les candidatures automatiquement</b><span class="step-desc" data-t="st2.d">L'agent IA surveille votre boîte mail (autorisation sécurisée) et importe les CV reçus en PDF ou DOCX, directement sur votre ordinateur.</span></span></button></li>
+          <li class="step"><button type="button"><span class="num">03</span><span class="step-body"><b data-t="st3.t">Classez chaque candidature par poste</b><span class="step-desc" data-t="st3.d">Chaque CV est lu par l'IA et rangé dans le poste auquel le candidat a postulé. Vous pouvez corriger à la main.</span></span></button></li>
+          <li class="step"><button type="button"><span class="num">04</span><span class="step-body"><b data-t="st4.t">Identifiez les meilleurs profils</b><span class="step-desc" data-t="st4.d">Pour chaque poste, les candidats sont classés du plus au moins adapté, avec un score de 0 à 100 % et un indicateur de potentiel.</span></span></button></li>
+          <li class="step"><button type="button"><span class="num">05</span><span class="step-body"><b data-t="st5.t">Interviewez en vidéo, en toute sécurité</b><span class="step-desc" data-t="st5.d">Le candidat rejoint par un simple lien web. INJARA enregistre (avec son accord), transcrit et signale les comportements suspects.</span></span></button></li>
+          <li class="step"><button type="button"><span class="num">06</span><span class="step-body"><b data-t="st6.t">Décidez avec un rapport complet</b><span class="step-desc" data-t="st6.d">Score CV, score d'entretien et rapport comportemental réunis dans un PDF par candidat. La décision finale vous appartient.</span></span></button></li>
+        </ol>
+
+        <div class="stage-col">
+          <p class="stage-count"><span data-t="sol.step">Étape</span> <b id="stepNow">1</b> <span data-t="sol.of">sur</span> 6</p>
+          <div class="stage" id="stage">
+
+            <!-- 1 profil de poste -->
+            <div class="mock is-active" id="mock-job">
+              <div class="win">
+                <div class="win-bar"><i></i><i></i><i></i><span>INJARA · <span data-t="m1.title">Nouveau profil de poste</span></span><em data-t="m.sample">Données d'exemple</em></div>
+                <div class="win-body form-mock">
+                  <label style="--i:0"><small data-t="m1.f1">Intitulé du poste</small><span class="field"><span class="typed" data-t="job.accountant">Comptable senior</span></span></label>
+                  <label style="--i:1"><small data-t="m1.f2">Expérience souhaitée</small><span class="field" data-t="m1.v2">5 ans et plus</span></label>
+                  <label style="--i:2"><small data-t="m1.f3">Formation</small><span class="field" data-t="m1.v3">Bac+3 en comptabilité ou finance</span></label>
+                  <label style="--i:3"><small data-t="m1.f4">Compétences clés</small><span class="chips"><span class="chip">SYSCOHADA</span><span class="chip">Sage</span><span class="chip" data-t="skill.tax">Fiscalité</span><span class="chip" data-t="skill.excel">Excel avancé</span><span class="chip ghost" data-t="m1.add">+ Ajouter</span></span></label>
+                  <span class="fake-btn" style="--i:4" data-t="m1.save">Enregistrer le poste</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2 agent -->
+            <div class="mock" id="mock-agent">
+              <div class="win">
+                <div class="win-bar"><i></i><i></i><i></i><span>INJARA · <span data-t="m2.title">Agent IA de récupération</span></span><em data-t="m.sample">Données d'exemple</em></div>
+                <div class="win-body">
+                  <p class="sync"><span class="spinner"></span><span data-t="m2.sync">Synchronisation de la boîte mail…</span></p>
+                  <ul class="mail-list">
+                    <li style="--i:0"><svg class="ic"><use href="#i-mail"/></svg><div><b><span data-t="mail.app">Candidature</span> – <span data-t="job.accountant">Comptable senior</span></b><small>a.ngono@…</small></div><span class="tick"><svg class="ic"><use href="#i-check"/></svg></span></li>
+                    <li style="--i:1"><svg class="ic"><use href="#i-mail"/></svg><div><b><span data-t="mail.app">Candidature</span> – <span data-t="job.accountant">Comptable senior</span></b><small>b.tchami@…</small></div><span class="tick"><svg class="ic"><use href="#i-check"/></svg></span></li>
+                    <li style="--i:2"><svg class="ic"><use href="#i-mail"/></svg><div><b><span data-t="mail.app">Candidature</span> – <span data-t="job.dev">Développeur web</span></b><small>e.mbarga@…</small></div><span class="tick"><svg class="ic"><use href="#i-check"/></svg></span></li>
+                    <li style="--i:3"><svg class="ic"><use href="#i-mail"/></svg><div><b data-t="mail.spont">Candidature spontanée</b><small>f.ewane@…</small></div><span class="tick"><svg class="ic"><use href="#i-check"/></svg></span></li>
+                  </ul>
+                  <p class="done-note" style="--i:5"><svg class="ic"><use href="#i-lock"/></svg><span data-t="m2.done">4 CV importés sur votre ordinateur · chiffrés</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 classement par poste -->
+            <div class="mock" id="mock-sort">
+              <div class="win">
+                <div class="win-bar"><i></i><i></i><i></i><span>INJARA · <span data-t="m3.title">Classement par poste</span></span><em data-t="m.sample">Données d'exemple</em></div>
+                <div class="win-body cols3">
+                  <div class="col" style="--i:0"><b data-t="job.accountant">Comptable senior</b><small data-t="m3.n4">4 candidatures</small><div class="avs"><span class="av a" style="--j:0">AN</span><span class="av b" style="--j:1">BT</span><span class="av c" style="--j:2">CF</span><span class="av d" style="--j:3">DK</span></div></div>
+                  <div class="col" style="--i:1"><b data-t="job.dev">Développeur web</b><small data-t="m3.n3">3 candidatures</small><div class="avs"><span class="av b" style="--j:4">EM</span><span class="av a" style="--j:5">GT</span><span class="av d" style="--j:6">HN</span></div></div>
+                  <div class="col" style="--i:2"><b data-t="job.sales">Commercial terrain</b><small data-t="m3.n2">2 candidatures</small><div class="avs"><span class="av c" style="--j:7">IF</span><span class="av a" style="--j:8">JB</span></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 tableau de bord -->
+            <div class="mock" id="mock-dash">
+              <div class="win">
+                <div class="win-bar"><i></i><i></i><i></i><span>INJARA · <span data-t="m4.title">Tableau de bord</span></span><em data-t="m.sample">Données d'exemple</em></div>
+                <div class="win-body">
+                  <div class="dash-head"><b data-t="m4.h">Classement par offre</b><span class="pill-new"><span class="pulse-dot"></span><span data-t="hc.new">12 nouveaux CV récupérés</span></span></div>
+                  <div class="tabs-mini"><span class="on"><span data-t="job.accountant">Comptable senior</span> (24)</span><span><span data-t="job.dev">Développeur web</span> (31)</span><span><span data-t="job.sales">Commercial terrain</span> (18)</span></div>
+                  <ul class="board">
+                    <li style="--i:0"><em>1</em><span class="av a">AN</span><div><b>A. Ngono</b><small><span data-t="f.accounting">Comptabilité</span> · <span data-t="y7">7 ans</span></small></div><i class="bar"><i style="--w:92%"></i></i><strong>92%</strong></li>
+                    <li style="--i:1"><em>2</em><span class="av b">BT</span><div><b>B. Tchami</b><small><span data-t="f.audit">Audit</span> · <span data-t="y5">5 ans</span></small></div><i class="bar"><i style="--w:87%"></i></i><strong>87%</strong></li>
+                    <li style="--i:2"><em>3</em><span class="av c">CF</span><div><b>C. Fouda</b><small><span data-t="f.finance">Finance</span> · <span data-t="y4">4 ans</span></small></div><i class="bar"><i style="--w:78%"></i></i><strong>78%</strong></li>
+                    <li style="--i:3"><em>4</em><span class="av d">DK</span><div><b>D. Kamga</b><small><span data-t="f.mgmt">Gestion</span> · <span data-t="y2">2 ans</span></small></div><i class="bar"><i style="--w:64%"></i></i><strong>64%</strong></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5 salle d'entretien -->
+            <div class="mock" id="mock-room">
+              <div class="win">
+                <div class="win-bar"><i></i><i></i><i></i><span>INJARA · <span data-t="m5.title">Salle d'entretien</span></span><em data-t="m.sample">Données d'exemple</em></div>
+                <div class="win-body room">
+                  <div class="video" style="--i:0">
+                    <span class="rec"><i></i>REC · 12:47</span>
+                    <span class="face"><svg class="ic"><use href="#i-user"/></svg></span>
+                    <span class="gaze"></span>
+                    <span class="vname">C. Fouda (<span data-t="m5.fict">fictif</span>)</span>
+                  </div>
+                  <div class="room-side">
+                    <div class="q" style="--i:1"><small data-t="m5.q">QUESTION 3 / 6</small><p data-t="m5.qt">Décrivez une clôture comptable difficile que vous avez gérée.</p></div>
+                    <div class="signals" style="--i:2"><small data-t="m5.sig">SIGNAUX À VÉRIFIER</small>
+                      <p><svg class="ic"><use href="#i-alert"/></svg><span data-t="m5.s1">Sortie de la fenêtre à 08:12</span></p>
+                      <p><svg class="ic"><use href="#i-eye"/></svg><span data-t="m5.s2">Regard hors écran : 12 % du temps</span></p>
+                    </div>
+                    <p class="transcribing" style="--i:3"><span class="wave"><i></i><i></i><i></i><i></i><i></i></span><span data-t="m5.tr">Transcription en cours…</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6 rapport -->
+            <div class="mock" id="mock-report">
+              <div class="win">
+                <div class="win-bar"><i></i><i></i><i></i><span data-t="m6.file">Rapport_C-Fouda.pdf</span><em data-t="m.sample">Données d'exemple</em></div>
+                <div class="win-body report">
+                  <div class="report-head" style="--i:0"><div><small data-t="m6.h">RAPPORT CANDIDAT</small><b>C. Fouda</b><span><span data-t="m6.offer">Offre</span> : <span data-t="job.accountant">Comptable senior</span></span></div><img src="assets/img/symbol-green.png" alt="" width="40" height="40"></div>
+                  <div class="scores">
+                    <div style="--i:1"><b>78%</b><small data-t="m6.s1">Score CV</small></div>
+                    <div style="--i:2"><b>81%</b><small data-t="m6.s2">Score entretien</small></div>
+                    <div class="hl" style="--i:3"><b>79%</b><small data-t="m6.s3">Score global</small></div>
+                  </div>
+                  <div class="behav" style="--i:4"><b data-t="m6.b">Rapport comportemental</b>
+                    <p data-t="m6.b1">• 1 sortie de la fenêtre (8 s)</p>
+                    <p data-t="m6.b2">• Regard hors écran : 12 % du temps</p>
+                    <p data-t="m6.b3">• Aucune application suspecte détectée</p>
+                  </div>
+                  <p class="fine" style="--i:5" data-t="m6.note">Indicateurs d'aide à la décision, pas une preuve.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FONCTIONNALITÉS ================= -->
+<section class="section wm wm-left" id="fonctionnalites">
+  <div class="container">
+    <div class="head-ill"><div class="sec-head">
+      <p class="eyebrow" data-reveal><span class="rule"></span><span data-t="ft.eyebrow">Fonctionnalités</span></p>
+      <h2 class="h2" data-reveal data-t="ft.title">Tout le recrutement, dans une seule application</h2>
+      <p class="lead" data-reveal data-t="ft.lead">De la réception des candidatures jusqu'au rapport final, sans jongler entre plusieurs outils.</p>
+    </div>
+      <figure class="ill ill-img" data-reveal><img src="assets/ill/une-seule-app.svg" alt="" width="960" height="500" loading="lazy" decoding="async"></figure>
+    </div>
+    <div class="bento">
+      <article class="card fcard f-wide glow" data-reveal>
+        <div class="f-text">
+          <span class="icon-box"><svg class="ic"><use href="#i-rank"/></svg></span>
+          <h3 data-t="ft.1.t">Classement intelligent par poste</h3>
+          <p data-t="ft.1.d">Chaque CV est assigné au bon poste puis classé. Le score se lit simplement, critère par critère :</p>
+          <ul class="meters">
+            <li><span data-t="cr.skills">Compétences</span><i class="bar"><i style="--w:40%"></i></i><b>40 %</b></li>
+            <li><span data-t="cr.exp">Expérience</span><i class="bar"><i style="--w:25%"></i></i><b>25 %</b></li>
+            <li><span data-t="cr.edu">Formation</span><i class="bar"><i style="--w:20%"></i></i><b>20 %</b></li>
+            <li><span data-t="cr.fit">Adéquation globale</span><i class="bar"><i style="--w:15%"></i></i><b>15 %</b></li>
+          </ul>
+        </div>
+        <div class="f-visual">
+          <div class="mini-board">
+            <div class="mini-head"><b data-t="job.accountant">Comptable senior</b><em data-t="m.example">Exemple</em></div>
+            <ul class="rank">
+              <li><em>1</em><span class="av a">AN</span><i class="bar"><i style="--w:92%"></i></i><b><span data-count="92">92</span>%</b></li>
+              <li><em>2</em><span class="av b">BT</span><i class="bar"><i style="--w:87%"></i></i><b><span data-count="87">87</span>%</b></li>
+              <li><em>3</em><span class="av c">CF</span><i class="bar"><i style="--w:78%"></i></i><b><span data-count="78">78</span>%</b></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article class="card fcard glow" data-reveal style="--d:1"><span class="icon-box"><svg class="ic"><use href="#i-bot"/></svg></span><h3 data-t="ft.2.t">Agent IA connecté à votre boîte mail</h3><p data-t="ft.2.d">Il récupère les CV reçus et vous prévient : « X nouveaux CV récupérés ». Vous choisissez la fréquence.</p></article>
+      <article class="card fcard glow" data-reveal style="--d:0"><span class="icon-box"><svg class="ic"><use href="#i-scan"/></svg></span><h3 data-t="ft.3.t">Analyse fine des CV</h3><p data-t="ft.3.d">Compétences, expérience, formation, organisations, dates et lieux extraits automatiquement, en français.</p></article>
+      <article class="card fcard glow" data-reveal style="--d:1"><span class="icon-box"><svg class="ic"><use href="#i-trend"/></svg></span><h3 data-t="ft.4.t">Potentiel à long terme</h3><p data-t="ft.4.d">Le potentiel d'évolution à 12–36 mois, justifié en clair : progression, polyvalence, stabilité, leadership.</p>
+        <div class="levels"><span data-t="lv.1">Faible</span><span data-t="lv.2">Moyen</span><span class="on" data-t="lv.3">Élevé</span><span data-t="lv.4">Exceptionnel</span></div></article>
+      <article class="card fcard glow" data-reveal style="--d:2"><span class="icon-box"><svg class="ic"><use href="#i-sliders"/></svg></span><h3 data-t="ft.5.t">Profils de poste sur mesure</h3><p data-t="ft.5.d">Décrivez n'importe quel poste, dans n'importe quel secteur : INJARA s'adapte à votre structure.</p></article>
+      <article class="card fcard glow" data-reveal style="--d:0"><span class="icon-box"><svg class="ic"><use href="#i-video"/></svg></span><h3 data-t="ft.6.t">Entretiens vidéo sécurisés</h3><p data-t="ft.6.d">Un simple lien web pour le candidat, sans installation. Enregistrement avec son accord, puis transcription automatique.</p>
+        <div class="link-pill"><span class="rec"><i></i>REC</span><span data-t="ft.6.n">Le candidat rejoint par un simple lien</span></div></article>
+      <article class="card fcard glow" data-reveal style="--d:1"><span class="icon-box"><svg class="ic"><use href="#i-file"/></svg></span><h3 data-t="ft.7.t">Rapports PDF</h3><p data-t="ft.7.d">Score CV, score d'entretien et rapport comportemental réunis pour chaque candidat, prêts à archiver ou partager.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONFIDENTIALITÉ ================= -->
+<section class="section section-dark" id="confidentialite">
+  <span class="ndop-band band-top" aria-hidden="true"></span>
+  <div class="pv-sun-wm" data-turn="0.22" aria-hidden="true"><svg class="sun" viewBox="0 0 1000 1000"><use href="#sun"/></svg></div>
+  <div class="container">
+    <div class="pv-head">
+      <div class="sec-head">
+        <p class="eyebrow eyebrow-light" data-reveal><span class="rule"></span><span data-t="pv.eyebrow">Confidentialité</span></p>
+        <h2 class="h2" data-reveal data-t="pv.title">Vos candidats restent chez vous</h2>
+        <p class="lead" data-reveal data-t="pv.lead">Contrairement aux solutions qui stockent vos données sur des serveurs étrangers, INJARA garde vos CV et vos analyses sur votre ordinateur, et bientôt, si vous le souhaitez, sur ses propres serveurs. Vous gardez le contrôle.</p>
+      </div>
+      <figure class="ill ill-img ill-dark" data-reveal><img src="assets/ill/donnees-privees.svg" alt="" width="855" height="800" loading="lazy" decoding="async"></figure>
+    </div>
+
+    <div class="flow" data-reveal>
+      <div class="flow-node"><span class="icon-box"><svg class="ic"><use href="#i-mail"/></svg></span><b data-t="pv.n0">Votre boîte mail</b><small data-t="pv.n1">Réception des e-mails</small></div>
+      <div class="flow-line" aria-hidden="true"><i></i></div>
+      <div class="flow-core">
+        <span class="core-ring"></span>
+        <span class="icon-box big"><svg class="ic"><use href="#i-lock"/></svg></span>
+        <b data-t="pv.core">Votre ordinateur</b><small data-t="pv.core.s">Protégé par mot de passe</small>
+        <ul>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-t="pv.k1">CV chiffrés</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-t="pv.k2">Analyses et scores</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-t="pv.k3">Enregistrements d'entretien</span></li>
+        </ul>
+        <em data-t="pv.k4">Aucun serveur étranger</em>
+      </div>
+      <div class="flow-line rev" aria-hidden="true"><i></i></div>
+      <div class="flow-node"><span class="icon-box"><svg class="ic"><use href="#i-globe"/></svg></span><b data-t="pv.n2">Navigateur du candidat</b><small data-t="pv.n2.s">Lien d'entretien</small></div>
+    </div>
+
+    <div class="grid g5 pv-grid">
+      <article class="dcard" data-reveal style="--d:0"><svg class="ic"><use href="#i-disk"/></svg><h3 data-t="pv.c1.t">Stockage maîtrisé</h3><p data-t="pv.c1.d">Les données des candidats restent sur l'ordinateur du recruteur. Bientôt, l'option des serveurs INJARA, jamais un serveur étranger.</p></article>
+      <article class="dcard" data-reveal style="--d:1"><svg class="ic"><use href="#i-shield"/></svg><h3 data-t="pv.c2.t">Chiffrement sur disque</h3><p data-t="pv.c2.d">Les CV et les données sont chiffrés : un fichier copié sans autorisation reste illisible.</p></article>
+      <article class="dcard" data-reveal style="--d:2"><svg class="ic"><use href="#i-key"/></svg><h3 data-t="pv.c3.t">Connexion sécurisée à la boîte mail</h3><p data-t="pv.c3.d">Vous autorisez l'accès depuis votre messagerie. Votre mot de passe n'est jamais stocké par INJARA.</p></article>
+      <article class="dcard" data-reveal style="--d:3"><svg class="ic"><use href="#i-lock"/></svg><h3 data-t="pv.c4.t">Mot de passe au démarrage</h3><p data-t="pv.c4.d">L'application est verrouillée : un mot de passe est demandé à chaque ouverture.</p></article>
+      <article class="dcard" data-reveal style="--d:4"><svg class="ic"><use href="#i-video"/></svg><h3 data-t="pv.c5.t">Enregistrements protégés</h3><p data-t="pv.c5.d">Les enregistrements d'entretien restent sous votre contrôle, accessibles uniquement au recruteur.</p></article>
+    </div>
+    <p class="transparency" data-reveal data-t="pv.note"><b>En toute transparence :</b> la récupération des e-mails passe par votre messagerie, et le candidat accède à l'entretien par un lien web. Ce que INJARA garantit, c'est que vos données de candidats et vos analyses ne sont jamais stockées sur un serveur étranger : elles restent sur votre ordinateur ou, demain, sur nos propres serveurs si vous le choisissez.</p>
+  </div>
+</section>
+
+<!-- ================= ENTRETIENS ================= -->
+<section class="section wm wm-right" id="entretiens">
+  <div class="container">
+    <div class="head-ill"><div class="sec-head">
+      <p class="eyebrow" data-reveal><span class="rule"></span><span data-t="iv.eyebrow">Entretiens sécurisés</span></p>
+      <h2 class="h2" data-reveal data-t="iv.title">Des entretiens vidéo plus fiables</h2>
+      <p class="lead" data-reveal data-t="iv.lead">Un entretien simple pour le candidat, des indicateurs utiles pour le recruteur.</p>
+    </div>
+      <figure class="ill ill-img" data-reveal><img src="assets/ill/entretien-video.svg" alt="" width="960" height="778" loading="lazy" decoding="async"></figure>
+    </div>
+    <div class="grid g2 sides">
+      <article class="card side side-navy" data-reveal>
+        <h3><svg class="ic"><use href="#i-building"/></svg><span data-t="iv.rec">Côté recruteur</span></h3>
+        <ul class="checks">
+          <li data-t="iv.r1">Vos questions affichées à l'écran pendant l'entretien</li>
+          <li data-t="iv.r2">Enregistrement avec l'accord du candidat</li>
+          <li data-t="iv.r3">Transcription automatique des réponses</li>
+          <li data-t="iv.r4">Score d'entretien calculé à la fin</li>
+        </ul>
+      </article>
+      <article class="card side" data-reveal style="--d:1">
+        <h3><svg class="ic"><use href="#i-user"/></svg><span data-t="iv.cand">Côté candidat</span></h3>
+        <ul class="checks">
+          <li data-t="iv.c1">Un simple lien web, reçu par e-mail</li>
+          <li data-t="iv.c2">Test de la webcam et du micro avant de commencer</li>
+          <li data-t="iv.c3">Aucune installation nécessaire</li>
+          <li data-t="iv.c4">Information claire sur l'enregistrement</li>
+        </ul>
+      </article>
+    </div>
+    <div class="grid g3 iv-grid">
+      <article class="card fcard glow" data-reveal style="--d:0"><span class="icon-box"><svg class="ic"><use href="#i-alert"/></svg></span><h3 data-t="iv.f1.t">Détection d'applications suspectes</h3><p data-t="iv.f1.d">Un avertissement est affiché avant le début. Pendant l'entretien, INJARA surveille les applications ouvertes et signale si le candidat quitte la fenêtre.</p></article>
+      <article class="card fcard glow" data-reveal style="--d:1"><span class="icon-box"><svg class="ic"><use href="#i-eye"/></svg></span><h3 data-t="iv.f2.t">Analyse du regard</h3><p data-t="iv.f2.d">INJARA mesure le temps passé hors écran et le résume simplement, par exemple : « le candidat a regardé à droite 34 % du temps ».</p>
+        <div class="gazebox"><small data-t="iv.ex">EXEMPLE FICTIF</small>
+          <div class="gazebar"><i class="gz1" style="--w:58%"></i><i class="gz2" style="--w:34%"></i><i class="gz3" style="--w:8%"></i></div>
+          <div class="gazelegend"><span><i class="gz1"></i><span data-t="iv.g1">Écran</span> 58 %</span><span><i class="gz2"></i><span data-t="iv.g2">Droite</span> 34 %</span><span><i class="gz3"></i><span data-t="iv.g3">Autre</span> 8 %</span></div>
+        </div></article>
+      <article class="card fcard glow" data-reveal style="--d:2"><span class="icon-box"><svg class="ic"><use href="#i-rank"/></svg></span><h3 data-t="iv.f3.t">Score d'entretien</h3><p data-t="iv.f3.d">Trois critères combinés, puis fusionnés avec le score du CV pour obtenir un score global :</p>
+        <ul class="meters">
+          <li><span data-t="iv.m1">Contenu des réponses</span><i class="bar"><i style="--w:40%"></i></i><b>40 %</b></li>
+          <li><span data-t="iv.m2">Comportement</span><i class="bar"><i style="--w:30%"></i></i><b>30 %</b></li>
+          <li><span data-t="iv.m3">Confiance / élocution</span><i class="bar"><i style="--w:30%"></i></i><b>30 %</b></li>
+        </ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APERÇU ================= -->
+<section class="section section-mist" id="apercu">
+  <div class="container">
+    <div class="head-ill"><div class="sec-head">
+      <p class="eyebrow" data-reveal><span class="rule"></span><span data-t="ov.eyebrow">Aperçu</span></p>
+      <h2 class="h2" data-reveal data-t="ov.title">Un outil clair, pensé pour les recruteurs</h2>
+      <p class="lead" data-reveal data-t="ov.lead">Un aperçu des principaux écrans de l'application.</p>
+    </div>
+      <figure class="ill ill-img" data-reveal><img src="assets/ill/apercu-outil.svg" alt="" width="800" height="619" loading="lazy" decoding="async"></figure>
+    </div>
+    <div class="preview" data-reveal>
+      <div class="ptabs" role="tablist" id="ptabs">
+        <span class="ptab-ind" aria-hidden="true"></span>
+        <button type="button" role="tab" aria-selected="true" class="on" data-t="m4.title">Tableau de bord</button>
+        <button type="button" role="tab" aria-selected="false" data-t="ov.t2">Fiche candidat</button>
+        <button type="button" role="tab" aria-selected="false" data-t="m5.title">Salle d'entretien</button>
+        <button type="button" role="tab" aria-selected="false" data-t="ov.t4">Rapport PDF</button>
+        <button type="button" role="tab" aria-selected="false" data-t="ov.t5">Statistiques</button>
+      </div>
+      <div class="ppanels" id="ppanels">
+        <div class="ppanel is-active" data-clone="mock-dash"></div>
+        <div class="ppanel">
+          <div class="win">
+            <div class="win-bar"><i></i><i></i><i></i><span>INJARA · <span data-t="ov.t2">Fiche candidat</span></span><em data-t="m.sample">Données d'exemple</em></div>
+            <div class="win-body sheet">
+              <div class="sheet-top" style="--i:0">
+                <div class="ring" style="--p:87"><b>87%</b><small data-t="sh.cv">score CV</small></div>
+                <div><b class="name">B. Tchami</b><span><span data-t="m6.offer">Offre</span> : <span data-t="job.accountant">Comptable senior</span></span><span class="pot"><span data-t="sh.pot">Potentiel</span> : <em data-t="lv.3">Élevé</em></span></div>
+              </div>
+              <ul class="meters" style="--i:1">
+                <li><span><span data-t="cr.skills">Compétences</span> (40 %)</span><i class="bar"><i style="--w:90%"></i></i><b>90%</b></li>
+                <li><span><span data-t="cr.exp">Expérience</span> (25 %)</span><i class="bar"><i style="--w:84%"></i></i><b>84%</b></li>
+                <li><span><span data-t="cr.edu">Formation</span> (20 %)</span><i class="bar"><i style="--w:80%"></i></i><b>80%</b></li>
+                <li><span><span data-t="sh.fit">Adéquation</span> (15 %)</span><i class="bar"><i style="--w:88%"></i></i><b>88%</b></li>
+              </ul>
+              <p class="why" style="--i:2" data-t="sh.why"><b>Pourquoi « Élevé » ?</b> Progression régulière (assistant → chef comptable en 5 ans), expérience dans deux secteurs, encadrement d'une petite équipe.</p>
+              <div class="chips" style="--i:3"><span class="chip">SYSCOHADA</span><span class="chip">Sage</span><span class="chip" data-t="skill.tax">Fiscalité</span><span class="chip" data-t="skill.excel">Excel avancé</span><span class="chip" data-t="skill.audit">Audit interne</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ppanel" data-clone="mock-room"></div>
+        <div class="ppanel" data-clone="mock-report"></div>
+        <div class="ppanel">
+          <div class="win">
+            <div class="win-bar"><i></i><i></i><i></i><span>INJARA · <span data-t="ov.t5">Statistiques</span></span><em data-t="m.sample">Données d'exemple</em></div>
+            <div class="win-body stats">
+              <div class="kpis">
+                <div style="--i:0"><b>248</b><small data-t="sx.k1">Candidatures</small></div>
+                <div style="--i:1"><b>3</b><small data-t="sx.k2">Postes ouverts</small></div>
+                <div style="--i:2"><b>12</b><small data-t="sx.k3">Entretiens</small></div>
+                <div style="--i:3"><b>38</b><small data-t="sx.k4">Nouveaux (7 j)</small></div>
+              </div>
+              <div class="stats-row">
+                <div class="chart" style="--i:4"><b data-t="sx.ch">Candidatures reçues</b><small data-t="sx.ch.s">6 derniers mois</small>
+                  <div class="bars"><span style="--h:38%"><i data-t="mo.5">Mai</i></span><span style="--h:52%"><i data-t="mo.6">Juin</i></span><span style="--h:44%"><i data-t="mo.7">Juil</i></span><span style="--h:66%"><i data-t="mo.8">Août</i></span><span style="--h:78%"><i data-t="mo.9">Sept</i></span><span style="--h:100%"><i data-t="mo.10">Oct</i></span></div>
+                </div>
+                <div class="activity" style="--i:5"><b data-t="sx.act">Activité récente</b>
+                  <p><span class="pulse-dot"></span><span><b data-t="sx.a1">Nouvelle candidature</b><small>A. Ngono · <span data-t="job.accountant">Comptable senior</span></small></span><em data-t="sx.h1">il y a 1 h</em></p>
+                  <p><span class="pulse-dot navy"></span><span><b data-t="sx.a2">Entretien terminé</b><small>C. Fouda · <span data-t="job.accountant">Comptable senior</span></small></span><em data-t="sx.h3">il y a 3 h</em></p>
+                  <p><span class="pulse-dot navy"></span><span><b data-t="sx.a3">Poste publié</b><small data-t="job.dev">Développeur web</small></span><em data-t="sx.d2">il y a 2 j</em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="fine center" data-t="ov.note">Aperçu illustratif · données fictives</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= POUR QUI ================= -->
+<section class="section wm wm-left" id="pour-qui">
+  <div class="container">
+    <div class="head-ill"><div class="sec-head">
+      <p class="eyebrow" data-reveal><span class="rule"></span><span data-t="au.eyebrow">Pour qui ?</span></p>
+      <h2 class="h2" data-reveal data-t="au.title">Conçu pour celles et ceux qui recrutent</h2>
+    </div>
+      <figure class="ill ill-img" data-reveal><img src="assets/ill/equipe-rh.svg" alt="" width="960" height="830" loading="lazy" decoding="async"></figure>
+    </div>
+    <div class="grid g3">
+      <article class="card acard" data-reveal style="--d:0"><span class="big-num">01</span><span class="icon-box"><svg class="ic"><use href="#i-building"/></svg></span><h3 data-t="au.1.t">PME</h3><p data-t="au.1.d">Vous recevez beaucoup de candidatures spontanées et n'avez pas le temps de toutes les lire ? INJARA fait le premier tri pour vous.</p></article>
+      <article class="card acard" data-reveal style="--d:1"><span class="big-num">02</span><span class="icon-box"><svg class="ic"><use href="#i-users"/></svg></span><h3 data-t="au.2.t">Cabinets de recrutement</h3><p data-t="au.2.d">Vous gérez plusieurs offres à la fois ? Chaque CV est rangé dans la bonne offre, avec un classement prêt à présenter à vos clients.</p></article>
+      <article class="card acard" data-reveal style="--d:2"><span class="big-num">03</span><span class="icon-box"><svg class="ic"><use href="#i-disk"/></svg></span><h3 data-t="au.3.t">Équipes RH sans service informatique</h3><p data-t="au.3.d">Installation guidée, aucune compétence technique requise : l'application fonctionne sur un ordinateur de bureau classique.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section section-mist" id="faq">
+  <div class="container faq-in">
+    <div class="sec-head faq-head">
+      <p class="eyebrow" data-reveal><span class="rule"></span><span>FAQ</span></p>
+      <h2 class="h2" data-reveal data-t="fq.title">Questions fréquentes</h2>
+      <div class="medal" data-reveal aria-hidden="true">
+        <svg viewBox="-200 -200 400 400">
+          <circle class="m-disc" r="198"/>
+          <circle class="m-ticks" r="184" data-turn="-0.1"/>
+          <circle class="m-stitch" r="168"/>
+          <g class="m-diamonds" data-turn="0.08">
+            <path d="M0-155l8 13-8 13-8-13z" transform="rotate(22.500)"/><path d="M0-155l8 13-8 13-8-13z" transform="rotate(67.500)"/><path d="M0-155l8 13-8 13-8-13z" transform="rotate(112.500)"/><path d="M0-155l8 13-8 13-8-13z" transform="rotate(157.500)"/>
+            <path d="M0-155l8 13-8 13-8-13z" transform="rotate(202.500)"/><path d="M0-155l8 13-8 13-8-13z" transform="rotate(247.500)"/><path d="M0-155l8 13-8 13-8-13z" transform="rotate(292.500)"/><path d="M0-155l8 13-8 13-8-13z" transform="rotate(337.500)"/>
+          </g>
+          <circle class="m-stitch" r="118"/>
+          <g class="m-sun" data-turn="0.2">
+            <g transform="scale(.205)">
+              <polygon class="m-oct" pathLength="1" points="0,-222 157,-157 222,0 157,157 0,222 -157,157 -222,0 -157,-157"/>
+              <g><path class="m-petal" style="--k:0" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/></g>
+              <g transform="rotate(45)"><path class="m-petal" style="--k:1" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/></g>
+              <g transform="rotate(90)"><path class="m-petal" style="--k:2" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/></g>
+              <g transform="rotate(135)"><path class="m-petal" style="--k:3" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/></g>
+              <g transform="rotate(180)"><path class="m-petal" style="--k:4" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/></g>
+              <g transform="rotate(225)"><path class="m-petal" style="--k:5" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/></g>
+              <g transform="rotate(270)"><path class="m-petal" style="--k:6" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/></g>
+              <g transform="rotate(315)"><path class="m-petal" style="--k:7" d="M-26-471H26L92-310A184 184 0 0 1-92-310Z"/></g>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="faq" id="faqList">
+      <div class="qa" data-reveal><button type="button" aria-expanded="false"><span data-t="fq.1.q">Faut-il un serveur ou un abonnement cloud ?</span><svg class="ic"><use href="#i-plus"/></svg></button><div class="qa-a"><div><p data-t="fq.1.a">Non. INJARA s'installe directement sur l'ordinateur du recruteur : aucun serveur à louer, aucun abonnement cloud à souscrire. Pour les entreprises qui le souhaitent, nous proposerons bientôt de stocker leurs données sur nos propres serveurs.</p></div></div></div>
+      <div class="qa" data-reveal><button type="button" aria-expanded="false"><span data-t="fq.2.q">Mes CV sont-ils envoyés à un tiers ?</span><svg class="ic"><use href="#i-plus"/></svg></button><div class="qa-a"><div><p data-t="fq.2.a">Les CV et les analyses sont stockés et chiffrés sur votre ordinateur. La récupération des e-mails passe naturellement par votre messagerie, et le candidat rejoint l'entretien par un lien web ; en revanche, vos données de candidats ne sont jamais stockées sur un serveur étranger.</p></div></div></div>
+      <div class="qa" data-reveal><button type="button" aria-expanded="false"><span data-t="fq.3.q">Le candidat doit-il installer quelque chose ?</span><svg class="ic"><use href="#i-plus"/></svg></button><div class="qa-a"><div><p data-t="fq.3.a">Non. Il reçoit un simple lien et rejoint l'entretien depuis son navigateur, après un test rapide de sa webcam et de son micro.</p></div></div></div>
+      <div class="qa" data-reveal><button type="button" aria-expanded="false"><span data-t="fq.4.q">L'IA décide-t-elle à ma place ?</span><svg class="ic"><use href="#i-plus"/></svg></button><div class="qa-a"><div><p data-t="fq.4.a">Non. INJARA propose un classement et des indicateurs pour vous faire gagner du temps. La décision finale reste toujours la vôtre.</p></div></div></div>
+      <div class="qa" data-reveal><button type="button" aria-expanded="false"><span data-t="fq.5.q">La détection du regard est-elle fiable à 100 % ?</span><svg class="ic"><use href="#i-plus"/></svg></button><div class="qa-a"><div><p data-t="fq.5.a">Non, et aucun outil ne peut l'être. C'est un indicateur qui attire votre attention sur un comportement, pas une preuve de triche.</p></div></div></div>
+      <div class="qa" data-reveal><button type="button" aria-expanded="false"><span data-t="fq.6.q">Quels formats de CV sont lus ?</span><svg class="ic"><use href="#i-plus"/></svg></button><div class="qa-a"><div><p data-t="fq.6.a">Les CV au format PDF et DOCX (Word).</p></div></div></div>
+      <div class="qa" data-reveal><button type="button" aria-expanded="false"><span data-t="fq.7.q">L'installation est-elle compliquée ?</span><svg class="ic"><use href="#i-plus"/></svg></button><div class="qa-a"><div><p data-t="fq.7.a">Non. Un installeur guidé et une documentation pas à pas sont fournis, pensés pour des utilisateurs non techniques.</p></div></div></div>
+      <div class="qa" data-reveal><button type="button" aria-expanded="false"><span data-t="fq.8.q">Combien ça coûte ?</span><svg class="ic"><use href="#i-plus"/></svg></button><div class="qa-a"><div><p data-t="fq.8.a">Les tarifs sont communiqués sur demande. Demandez un devis via le formulaire ci-dessous.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section contact" id="contact">
+  <div class="contact-bg" aria-hidden="true"></div>
+  <span class="ndop-band band-top" aria-hidden="true"></span>
+  <div class="container contact-in">
+    <div class="contact-text">
+      <h2 class="h2" data-reveal data-t="ct.title">Prêt à trier vos CV intelligemment ?</h2>
+      <p class="lead" data-reveal data-t="ct.lead">Demandez une démo personnalisée ou un devis adapté à votre volume de candidatures. Nous vous répondons rapidement.</p>
+      <div class="contact-cta" data-reveal>
+        <a class="btn btn-primary" href="#demo" data-want="demo"><span data-t="cta.demo">Demander une démo</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#devis" data-want="quote" data-t="cta.quote">Demander un devis</a>
+      </div>
+      <ul class="contact-list" data-reveal>
+        <li><span class="icon-box"><svg class="ic"><use href="#i-mail"/></svg></span><div><small data-t="ct.email">E-mail</small><a href="mailto:team@injara.site">team@injara.site</a></div></li>
+        <li><span class="icon-box"><svg class="ic"><use href="#i-phone"/></svg></span><div><small data-t="ct.phone">Téléphone / WhatsApp</small><a href="tel:+237699704281">+237 699 70 42 81</a><a href="tel:+237679048058">+237 679 04 80 58</a></div></li>
+        <li><span class="icon-box"><svg class="ic"><use href="#i-pin"/></svg></span><div><small data-t="ct.city">Ville</small><span data-t="ct.cityv">Dschang, Cameroun</span></div></li>
+      </ul>
+      <a class="wa" href="https://wa.me/237699704281" target="_blank" rel="noopener" data-reveal><svg class="ic"><use href="#i-whatsapp"/></svg><span data-t="ct.wa">Écrire sur WhatsApp</span></a>
+    </div>
+
+    <form class="form" id="contactForm" novalidate data-reveal>
+      <span id="demo"></span><span id="devis"></span>
+      <div class="form-body">
+        <fieldset class="want">
+          <legend data-t="fm.want">Je souhaite</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="want" value="demo" checked><svg class="ic"><use href="#i-demo"/></svg><span data-t="fm.demo">Une démo</span><i class="opt-check"></i></label>
+            <label class="opt"><input type="radio" name="want" value="quote"><svg class="ic"><use href="#i-file"/></svg><span data-t="fm.quote">Un devis</span><i class="opt-check"></i></label>
+          </div>
+        </fieldset>
+        <div class="frow">
+          <label class="fl"><span data-t="fm.name">Nom complet</span><input type="text" name="name" autocomplete="name" required></label>
+          <label class="fl"><span data-t="fm.email">E-mail professionnel</span><input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <label class="fl"><span data-t="fm.company">Entreprise</span><input type="text" name="company" autocomplete="organization" required></label>
+        <fieldset class="vol" id="volField">
+          <legend data-t="fm.volume">CV reçus par mois</legend>
+          <div class="vchips">
+            <label class="vchip"><input type="radio" name="volume" value="1"><span data-t="fm.v1">Moins de 50</span></label>
+            <label class="vchip"><input type="radio" name="volume" value="2"><span data-t="fm.v2">50 à 200</span></label>
+            <label class="vchip"><input type="radio" name="volume" value="3"><span data-t="fm.v3">200 à 500</span></label>
+            <label class="vchip"><input type="radio" name="volume" value="4"><span data-t="fm.v4">Plus de 500</span></label>
+            <label class="vchip"><input type="radio" name="volume" value="5"><span data-t="fm.v5">Je ne sais pas encore</span></label>
+          </div>
+        </fieldset>
+        <label class="fl"><span><span data-t="fm.msg">Message</span> <i data-t="fm.opt">(facultatif)</i></span><textarea name="message" rows="4"></textarea></label>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="consent"><input type="checkbox" name="consent" required><span><span data-t="fm.consent">J'accepte qu'INJARA utilise ces informations pour me recontacter au sujet de ma demande. Elles ne seront ni vendues ni cédées.</span> <a href="politique-de-confidentialite.html" data-t="ft2.privacy">Politique de confidentialité</a></span></label>
+        <button class="btn btn-primary btn-lg btn-block" type="submit"><span class="btn-label" data-t="fm.send.demo">Envoyer ma demande de démo</span><svg class="ic"><use href="#i-arrow"/></svg><span class="spinner"></span></button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <span class="ndop-band" aria-hidden="true"></span>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/img/wordmark-white.png" alt="Injara" width="130" height="46">
+        <p class="tagline" data-t="fo.tag">L'IA recrute avec vous.</p>
+        <p data-t="fo.desc">INJARA est une solution africaine de recrutement intelligent, née au Cameroun : tri des CV par IA, classement par offre et entretiens vidéo sécurisés, avec des données qui restent chez vous.</p>
+        <p class="footer-contact"><a href="mailto:team@injara.site">team@injara.site</a><a href="tel:+237699704281">+237 699 70 42 81</a><a href="tel:+237679048058">+237 679 04 80 58</a><span data-t="ct.cityv">Dschang, Cameroun</span></p>
+      </div>
+      <nav aria-label="Pied de page">
+        <h4 data-t="fo.nav">Navigation</h4>
+        <a href="#probleme" data-t="nav.problem">Problème</a>
+        <a href="#solution" data-t="nav.solution">Solution</a>
+        <a href="#fonctionnalites" data-t="nav.features">Fonctionnalités</a>
+        <a href="#confidentialite" data-t="nav.privacy">Confidentialité</a>
+        <a href="#entretiens" data-t="nav.interviews">Entretiens</a>
+        <a href="#faq" data-t="nav.faq">FAQ</a>
+        <a href="#contact" data-t="nav.contact">Contact</a>
+      </nav>
+      <div>
+        <h4 data-t="fo.follow">Suivez-nous</h4>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/injara/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a>
+          <a href="https://www.facebook.com/share/1cgUrFExqH/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ic"><use href="#i-facebook"/></svg><span>Facebook</span></a>
+          <a href="https://vt.tiktok.com/ZSphER1wD/" target="_blank" rel="noopener" aria-label="TikTok"><svg class="ic"><use href="#i-tiktok"/></svg><span>TikTok</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2026</span> INJARA. <span data-t="fo.rights">Tous droits réservés.</span></p>
+      <p><a href="mentions-legales.html" data-t="ft2.legal">Mentions légales</a><a href="politique-de-confidentialite.html" data-t="ft2.privacy">Politique de confidentialité</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

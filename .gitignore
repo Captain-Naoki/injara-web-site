@@ -1,0 +1,8 @@
+# Images de référence (non utilisées par le site)
+EXAMPLE- PIC/
+# Réglages locaux de l'éditeur
+.claude/
+# Système
+.DS_Store
+Thumbs.db
+desktop.ini

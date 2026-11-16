@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="48" viewBox="0 0 480 48">
+  <!-- Bande de motifs inspirés du ndop (étoffe indigo des Grassfields, Ouest-Cameroun) : points cousus -->
+  <g fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.1 5.6">
+    <path d="M0 3H480M0 45H480"/>
+    <path d="M30 8L46 24L30 40L14 24Z"/><path d="M30 16L38 24L30 32L22 24Z"/>
+    <path d="M80 10V38M100 10V38M80 15H100M80 24H100M80 33H100"/>
+    <circle cx="150" cy="24" r="15"/><circle cx="150" cy="24" r="8"/>
+    <path d="M196 15L210 9L224 15M196 25L210 19L224 25M196 35L210 29L224 35"/>
+    <path d="M256 10H284V38H256Z"/><path d="M256 10L284 38M284 10L256 38"/>
+    <path d="M316 10H344L316 38H344Z"/>
+    <circle cx="390" cy="24" r="7"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
+    <path d="M390 12V8M390 36V40M378 24H374M402 24H406M381.500 15.500L378.700 12.700M398.500 32.500L401.300 35.300M398.500 15.500L401.300 12.700M381.500 32.500L378.700 35.300"/>
+  </g>
+  <g fill="#fff">
+    <circle cx="30" cy="24" r="2.600"/><circle cx="150" cy="24" r="2.600"/>
+    <circle cx="440" cy="14" r="2.600"/><circle cx="450" cy="14" r="2.600"/><circle cx="460" cy="14" r="2.600"/>
+    <circle cx="440" cy="24" r="2.600"/><circle cx="450" cy="24" r="2.600"/><circle cx="460" cy="24" r="2.600"/>
+    <circle cx="440" cy="34" r="2.600"/><circle cx="450" cy="34" r="2.600"/><circle cx="460" cy="34" r="2.600"/>
+  </g>
+</svg>
