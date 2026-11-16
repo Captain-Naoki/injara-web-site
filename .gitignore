@@ -6,3 +6,6 @@ EXAMPLE- PIC/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Fichiers locaux de Wrangler
+.wrangler/
