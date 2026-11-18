@@ -359,7 +359,14 @@
         setTimeout(function () { form.elements.name.focus({ preventScroll: true }); }, 600);
       });
     });
-    if (location.hash === '#devis') choose('quote'); else syncLabel();
+    // Liens directs vers le formulaire : …/#demo ou …/#devis (aussi avec ?lang=xx)
+    function fromHash() {
+      if (location.hash === '#devis') choose('quote');
+      else if (location.hash === '#demo') choose('demo');
+      else syncLabel();
+    }
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
     function say(cls, html) { status.className = 'form-status ' + cls; status.innerHTML = html; }
     var volField = $('#volField');
     function volume() { var c = $('input[name=volume]:checked', form); return c ? c.parentNode.textContent.trim() : ''; }
@@ -407,6 +414,14 @@
     var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
     initLangMenu(); initNav(); initHero(); initMarquee(); initSplit(); initSteps(); initPreview();
     initFaq(); initReveal(); initPointer(); initForm(); initScroll();
+    // La traduction se charge après le défilement automatique du navigateur : on refait le saut vers l'ancre.
+    if (location.hash.length > 1) {
+      var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) setTimeout(function () {
+        var el = target.closest('form') || target;
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: 'instant' });
+      }, 60);
+    }
   }
   loadLang(init);
 })();
